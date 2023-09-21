@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './index.css';
 import Employee from './components/Employee';
 import { v4 as uuid4 } from 'uuid';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [role, setRole] = useState('dev');
@@ -50,7 +51,6 @@ function App() {
           />
           <div className='flex flex-wrap'>
             {employees.map((empl) => {
-              console.log(uuid4());
               return (
                 <Employee
                   key={uuid4()}
