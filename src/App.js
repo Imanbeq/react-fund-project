@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './index.css';
 import Employee from './components/Employee';
 
 function App() {
@@ -16,10 +16,27 @@ function App() {
               setRole(e.target.value);
             }}
           />
-          <Employee name='Caleb' role='intern' />
-          <Employee name='Adam' role='security' />
-          <Employee name='Susan' role={role} />
-          <Employee name='Becky' />
+          <div className='flex flex-wrap'>
+            <Employee
+              name='Caleb'
+              role='intern'
+              img='https://black-pearl-storage.storage.yandexcloud.net/public/images/0ivvwt6MxwfNvLMuL8b0wlbVKW5VxMWu4hOiW90a.jpg'
+            />
+            <Employee
+              name='Adam'
+              role='security'
+              img='https://black-pearl-storage.storage.yandexcloud.net/public/images/0ivvwt6MxwfNvLMuL8b0wlbVKW5VxMWu4hOiW90a.jpg'
+            />
+            <Employee
+              name='Susan'
+              role={role}
+              img='https://black-pearl-storage.storage.yandexcloud.net/public/images/0ivvwt6MxwfNvLMuL8b0wlbVKW5VxMWu4hOiW90a.jpg'
+            />
+            <Employee
+              name='Becky'
+              img='https://black-pearl-storage.storage.yandexcloud.net/public/images/0ivvwt6MxwfNvLMuL8b0wlbVKW5VxMWu4hOiW90a.jpg'
+            />
+          </div>
         </>
       ) : (
         <p>You cannot see employees</p>
