@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function EditEmployee(props) {
+function AddEmployee(props) {
   const [name, setName] = useState(props.name);
   const [role, setRole] = useState(props.role);
 
@@ -103,4 +103,4 @@ function EditEmployee(props) {
   );
 }
 
-export default EditEmployee;
+export default AddEmployee;
