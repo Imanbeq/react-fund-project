@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './index.css';
 import Employee from './components/Employee';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AddEmployee from './components/AddEmployee';
+import { v4 as uuid4 } from 'uuid';
 
 function App() {
   const [role, setRole] = useState('dev');
@@ -55,7 +57,18 @@ function App() {
     setEmployees(updatedEmployees);
   }
 
+  function newEmployee(name, role, img) {
+    const newEmployee = {
+      id: uuid4(),
+      name: name,
+      role: role,
+      img: img,
+    };
+    setEmployees([...employees, newEmployee]);
+  }
+
   const showEmployees = true;
+
   return (
     <div>
       {showEmployees ? (
@@ -66,7 +79,7 @@ function App() {
               setRole(e.target.value);
             }}
           />
-          <div className='flex flex-wrap'>
+          <div className='flex flex-wrap justify-center'>
             {employees.map((empl) => {
               return (
                 <Employee
@@ -80,6 +93,7 @@ function App() {
               );
             })}
           </div>
+          <AddEmployee newEmployee={newEmployee} />
         </>
       ) : (
         <p>You cannot see employees</p>
