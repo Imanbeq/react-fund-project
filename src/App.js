@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AddEmployee from './components/AddEmployee';
 import { v4 as uuid4 } from 'uuid';
 import EditEmployee from './components/EditEmployee';
+import Header from './components/Header';
 
 function App() {
   const [role, setRole] = useState('dev');
@@ -71,16 +72,11 @@ function App() {
   const showEmployees = true;
 
   return (
-    <div>
+    <div className='bg-gray-300 min-h-screen'>
+      <Header />
       {showEmployees ? (
         <>
-          <input
-            type='text'
-            onChange={(e) => {
-              setRole(e.target.value);
-            }}
-          />
-          <div className='flex flex-wrap justify-center'>
+          <div className='flex flex-wrap justify-center my-2'>
             {employees.map((empl) => {
               const editEmployee = (
                 <EditEmployee
