@@ -72,7 +72,6 @@ function Employees() {
 
   return (
     <div className='bg-gray-300 min-h-screen'>
-      <Header />
       {showEmployees ? (
         <>
           <div className='flex flex-wrap justify-center my-2'>
