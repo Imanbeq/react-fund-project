@@ -17,6 +17,7 @@ function App() {
           <Route path='/customers' element={<Customers />} />
           <Route path='/dictionary' element={<Dictionary />} />
           <Route path='/definiton' element={<Definition />} />
+          <Route path='/definiton/:search' element={<Definition />} />
         </Routes>
       </Header>
     </BrowserRouter>
