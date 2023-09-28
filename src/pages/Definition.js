@@ -13,7 +13,6 @@ export default function Definition() {
       })
       .then((data) => {
         setWord(data[0].meanings);
-        console.log(data[0].meanings);
       });
   }, []);
 
