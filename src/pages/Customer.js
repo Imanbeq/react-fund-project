@@ -23,6 +23,7 @@ const Customer = () => {
         setCustomer(data.customer);
       });
   }, []);
+
   return (
     <>
       {notFound ? <p>The customer with id {id} was not found</p> : null}
@@ -34,6 +35,29 @@ const Customer = () => {
           <p>{customer.industry}</p>
         </div>
       ) : null}
+      <button
+        onClick={() => {
+          const url = baseUrl + 'api/customers/' + id;
+          fetch(url, {
+            method: 'DELETE',
+            headers: {
+              'Content-type': 'application/json',
+            },
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error('Something went worng');
+              }
+              navigate('/customers');
+            })
+            .catch((e) => {
+              console.log(e);
+            });
+        }}
+      >
+        Delete
+      </button>
+      <br />
       <Link to='/customers'>Go Back</Link>
     </>
   );
