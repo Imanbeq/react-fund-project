@@ -1,7 +1,34 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { baseUrl } from '../shared';
 
 const Customers = () => {
-  return <div>Hello Customers</div>;
+  const [customers, setCustomers] = useState();
+  useEffect(() => {
+    const url = baseUrl + 'api/customers/';
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setCustomers(data.customers);
+      });
+  }, []);
+  return (
+    <>
+      <h1>Hello are our customers: </h1>
+      {customers
+        ? customers.map((customer) => {
+            return (
+              <ul>
+                <li>
+                  <Link to={'/customers/' + customer.id}>{customer.name}</Link>
+                </li>
+              </ul>
+            );
+          })
+        : null}
+    </>
+  );
 };
 
 export default Customers;
