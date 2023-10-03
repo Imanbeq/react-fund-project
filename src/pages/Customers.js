@@ -5,12 +5,17 @@ import AddCustomer from '../components/AddCustomer';
 
 const Customers = () => {
   const [customers, setCustomers] = useState();
+  const [show, setShow] = useState(false);
+
+  function toggleShow() {
+    setShow(!show);
+  }
+
   useEffect(() => {
     const url = baseUrl + 'api/customers/';
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setCustomers(data.customers);
       });
   }, []);
@@ -32,8 +37,8 @@ const Customers = () => {
         return response.json();
       })
       .then((data) => {
-        // assume the add was succesful
-        // hide the modal
+        toggleShow();
+        setCustomers([...customers, data.customer]);
         // make sure the list is updated appropriately
       })
       .catch((e) => {
@@ -55,7 +60,11 @@ const Customers = () => {
             })
           : null}
       </ul>
-      <AddCustomer newCustomer={newCustomer} />
+      <AddCustomer
+        newCustomer={newCustomer}
+        show={show}
+        toggleShow={toggleShow}
+      />
     </>
   );
 };
